@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SketchVG</title>
+    <script src="libs/underscore.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+        }
+
+        #stage {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+
+        #toolbar {
+            display: block;
+        }
+
+        #toolbar select option {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div id="stage">
+    <svg id="svg"
+         version="1.1" baseProfile="full"
+         width="100%" height="95%"
+         xmlns="http://www.w3.org/2000/svg">
+        <style>
+            svg {
+                background: #333;
+            }
+
+            path {
+                stroke: #ccc;
+                stroke-width: 2px;
+                fill: transparent;
+            }
+
+            .element_selected {
+                stroke: #fff;
+                stroke-width: 5px;
+                cursor: move;
+            }
+        </style>
+        <g id="elements"></g>
+    </svg>
+</div>
+
+<form id="toolbar">
+    <select name="mode">
+        <option value="pen">Pen</option>
+        <option value="select">Select</option>
+        <option value="line_to">Line To</option>
+        <option value="rect">Rect</option>
+        <option value="ellipse">Ellipse</option>
+    </select>
+</form>
+
+<script src="index.js"></script>
+
+</body>
+</html>
