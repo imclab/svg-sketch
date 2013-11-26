@@ -6,23 +6,27 @@
         toolbar = document.getElementById("toolbar"),
         modes = {
             pen:    {
-                is_drawing: false,
-                element:    null,
-                element_d:  "",
-                mousedown:  function (e) {
+                is_drawing:  false,
+                element:     null,
+                element_d:   "",
+                mousedown:   function (e) {
                     this.is_drawing = true;
                     this.element = document.createElementNS("http://www.w3.org/2000/svg", "path");
                     elements.appendChild(this.element);
                     this.element_d = " M " + e.offsetX + ", " + e.offsetY;
                     this.element.setAttribute("d", this.element_d);
                 },
-                mousemove:  function (e) {
+                mousemove:   function (e) {
                     if (!this.is_drawing) return;
                     this.element_d += " L " + e.offsetX + ", " + e.offsetY;
                     this.element.setAttribute("d", this.element_d);
                 },
-                mouseup:    function () {
+                mouseup:     function () {
                     this.is_drawing = false;
+                },
+                contextmenu: function (e) {
+                    e.preventDefault();
+                    return false;
                 }
             },
             select: {
@@ -66,6 +70,10 @@
                         this.is_moving = false;
                         this.move_start_position = null;
                     }
+                },
+                contextmenu:         function (e) {
+                    e.preventDefault();
+                    return false;
                 }
             }
         };
@@ -73,10 +81,12 @@
     svg.addEventListener("mousedown", process);
     svg.addEventListener("mousemove", process);
     svg.addEventListener("mouseup", process);
+    svg.addEventListener("contextmenu", process);
 
     function process(e) {
         var event = e.type,
             mode = toolbar.mode.value;
+        svg.setAttribute("class", mode);
         if (typeof modes[mode][event] === "function") {
             modes[mode][event](e);
         }
