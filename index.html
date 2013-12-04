@@ -1,77 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>SketchVG</title>
     <script src="libs/underscore.js"></script>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #000;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+      }
 
-        #stage {
-            display: block;
-            height: 90%;
-            width: 100%;
-        }
+      #stage {
+        display: block;
+        height: 90%;
+        width: 100%;
+      }
 
-        #toolbar {
-            display: block;
-        }
+      #toolbar {
+        display: block;
+      }
 
-        #toolbar select option {
-            display: inline-block;
-        }
+      #toolbar select option {
+        display: inline-block;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
 
-<div id="stage">
-    <svg id="svg"
-         version="1.1" baseProfile="full"
-         width="100%" height="90%"
-         xmlns="http://www.w3.org/2000/svg">
+    <div id="stage">
+      <svg id="svg"
+           version="1.1" baseProfile="full"
+           width="100%" height="90%"
+           xmlns="http://www.w3.org/2000/svg">
         <style>
-            svg {
-                background: #333;
-            }
+          svg {
+            background: #333;
+          }
 
-            svg.pen {
-                cursor: crosshair;
-            }
+          svg.pen, svg.line_to, svg.rect {
+            cursor: crosshair;
+          }
 
-            svg.select {
-                cursor: default;
-            }
+          svg.select {
+            cursor: default;
+          }
 
-            path {
-                stroke: #ccc;
-                stroke-width: 2px;
-                fill: transparent;
-            }
+          path, line, polygon {
+            stroke: #ccc;
+            stroke-width: 2px;
+            fill: transparent;
+          }
 
-            .element_selected {
-                stroke: #fff;
-                stroke-width: 5px;
-                cursor: move;
-            }
+          .element_selected {
+            stroke: #fff;
+            cursor: move;
+          }
         </style>
         <g id="elements"></g>
-    </svg>
-</div>
+      </svg>
+    </div>
 
-<form id="toolbar">
-    <select name="mode">
+    <form id="toolbar">
+      <select name="mode">
         <option value="pen">Pen</option>
         <option value="select">Select</option>
         <option value="line_to">Line To</option>
         <option value="rect">Rect</option>
         <option value="ellipse">Ellipse</option>
-    </select>
-</form>
+      </select>
+    </form>
 
-<script src="index.js"></script>
+    <script src="index.js"></script>
 
-</body>
+  </body>
 </html>
